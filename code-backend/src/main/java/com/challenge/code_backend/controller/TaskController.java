@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api/tasks")
@@ -53,5 +54,15 @@ public class TaskController {
        return taskService.getTaskByColor(color);
     }
 
+    //UPDATE COLOR
+    @PatchMapping("/{id}/color")
+    public ResponseEntity<Task> updateTaskColor(@PathVariable String id, @RequestBody String newColor){
+        Task updateTask = taskService.updateTaskColor(id, newColor);
+        if(updateTask != null){
+            return ResponseEntity.ok(updateTask);
+        }else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TaskService {
@@ -56,5 +57,16 @@ public class TaskService {
     //GET BY COLOR
     public List<Task> getTaskByColor(String color){
         return taskRepository.findAllByColor(color);
+    }
+
+    //PUT ONLY COLOR
+    public Task updateTaskColor(String id, String newColor){
+        Optional<Task> taskOptional = taskRepository.findById(id);
+        if(taskOptional.isPresent()){
+            Task task = taskOptional.get();
+            task.setColor(newColor);
+            return taskRepository.save(task);
+        }
+        return null;
     }
 }
