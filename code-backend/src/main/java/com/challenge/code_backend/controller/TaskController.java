@@ -27,5 +27,19 @@ public class TaskController {
         return taskService.getAllTasks();
     }
 
+    //UPDATE TASK
+    @PutMapping("/{id}")
+    public ResponseEntity<Task>updateTask(@PathVariable String id, @RequestBody Task taskDetails){
+        Task updatedTask = taskService.updateTask(id, taskDetails);
+        return ResponseEntity.ok(updatedTask);
+    }
+
+    //DELETE TASK
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteTask(@PathVariable String id){
+        taskService.deleteTask(id);
+        return ResponseEntity.noContent().build();
+    }
+
 
 }
