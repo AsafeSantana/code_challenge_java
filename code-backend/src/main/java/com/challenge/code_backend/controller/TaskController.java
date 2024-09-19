@@ -41,5 +41,11 @@ public class TaskController {
         return ResponseEntity.noContent().build();
     }
 
+    //GET FAVORITES
+    @GetMapping("/favorites")
+    public List<Task> getFavoriteTasks(){
+        return taskService.getFavoriteTasks();
+    }
+
 
 }

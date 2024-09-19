@@ -43,7 +43,13 @@ public class TaskService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Task not found"));
     }
 
+    //DELETE TASK
     public void deleteTask(String id) {
         taskRepository.deleteById(id);
+    }
+
+    //GET FAVORITES
+    public List<Task> getFavoriteTasks(){
+        return  taskRepository.findAllByFavorite(true);
     }
 }
