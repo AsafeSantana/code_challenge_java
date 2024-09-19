@@ -52,4 +52,9 @@ public class TaskService {
     public List<Task> getFavoriteTasks(){
         return  taskRepository.findAllByFavorite(true);
     }
+
+    //GET BY COLOR
+    public List<Task> getTaskByColor(String color){
+        return taskRepository.findAllByColor(color);
+    }
 }

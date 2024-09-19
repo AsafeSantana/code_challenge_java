@@ -47,5 +47,11 @@ public class TaskController {
         return taskService.getFavoriteTasks();
     }
 
+    //GET COLOR
+    @GetMapping("/color/{color}")
+    public List<Task> getTaskByColor(@PathVariable String color){
+       return taskService.getTaskByColor(color);
+    }
+
 
 }
