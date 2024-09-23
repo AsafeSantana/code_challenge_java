@@ -34,7 +34,6 @@ public class TaskService {
         task.setDescription(taskDetails.getDescription());
         task.setFavorite(taskDetails.isFavorite());
         task.setColor(taskDetails.getColor());
-        task.setCompleted(taskDetails.isCompleted());
         return taskRepository.save(task);
     }
 

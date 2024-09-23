@@ -23,6 +23,4 @@ public class Task {
     private boolean favorite;
 
     private String color;
-
-    private boolean completed = false;
 }

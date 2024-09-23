@@ -25,18 +25,24 @@ class TaskRepositoryTest {
     void findAllByFavorite() {
 
         Task task1 = new Task();
-        task1.setTitle("Task 1");
+        task1.setTitle("Ir a academia");
+        task1.setDescription("Ir a academia 15h");
         task1.setFavorite(true);
+        task1.setColor("#fffff");
         entityManager.persist(task1);
 
         Task task2 = new Task();
-        task2.setTitle("Task 2");
+        task2.setTitle("Comprar Pão");
+        task2.setDescription("Comprar Pão");
         task2.setFavorite(true);
+        task2.setColor("#fffff");
         entityManager.persist(task2);
 
         Task task3 = new Task();
-        task3.setTitle("Task 3");
+        task3.setTitle("Ia a praça");
+        task3.setDescription("Ir a praça");
         task3.setFavorite(false);
+        task3.setColor("#fffff");
         entityManager.persist(task3);
 
         entityManager.flush();
