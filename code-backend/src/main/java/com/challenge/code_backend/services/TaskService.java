@@ -27,6 +27,8 @@ public class TaskService {
         return taskRepository.findAll();
     }
 
+
+
     //UPDATE TASK
     public Task updateTask(String id, Task taskDetails){
         Task task = getTaskById(id);
@@ -38,6 +40,7 @@ public class TaskService {
     }
 
 
+    //GET BY ID
     public Task getTaskById(String id) {
         return taskRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Task not found"));

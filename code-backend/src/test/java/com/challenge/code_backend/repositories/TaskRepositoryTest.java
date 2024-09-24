@@ -24,33 +24,39 @@ class TaskRepositoryTest {
     @Test
     void findAllByFavorite() {
 
-        Task task1 = new Task();
-        task1.setTitle("Ir a academia");
-        task1.setDescription("Ir a academia 15h");
-        task1.setFavorite(true);
-        task1.setColor("#fffff");
-        entityManager.persist(task1);
-
-        Task task2 = new Task();
-        task2.setTitle("Comprar Pão");
-        task2.setDescription("Comprar Pão");
-        task2.setFavorite(true);
-        task2.setColor("#fffff");
-        entityManager.persist(task2);
-
-        Task task3 = new Task();
-        task3.setTitle("Ia a praça");
-        task3.setDescription("Ir a praça");
-        task3.setFavorite(false);
-        task3.setColor("#fffff");
-        entityManager.persist(task3);
+        persistTask("Ir a academia", "Ir a academia 15h", true, "#ffffff");
+        persistTask("Comprar Pão", "Comprar Pão", true, "#ffffff");
+        persistTask("Ir a praça", "Ir a praça", false, "#ffffff");
 
         entityManager.flush();
 
         List<Task> favoriteTasks = taskRepository.findAllByFavorite(true);
 
-        assertEquals(2,favoriteTasks.size(),"Deve conter 2 tarefas favoritas" );
+        assertEquals(2, favoriteTasks.size(), "Deve conter 2 tarefas favoritas");
         assertTrue(favoriteTasks.stream().allMatch(Task::isFavorite), "Todas as tarefas devem ser favoritas");
+    }
 
+    @Test
+    void findAllByColor() {
+
+        persistTask("Lavar o carro", "Lavar o carro amanhã", true, "#faffff");
+        persistTask("Fazer o lanche", "Fazer o lanche da tarde", true, "#faffff");
+        persistTask("Fazer Almoço", "Começar o almoço", false, "#ffffff");
+
+        entityManager.flush();
+
+        List<Task> colorTasks = taskRepository.findAllByColor("#faffff");
+
+        assertEquals(2, colorTasks.size(), "Deve conter 2 tarefas com a cor especificada");
+        assertTrue(colorTasks.stream().allMatch(task -> "#faffff".equals(task.getColor())), "Todas as tarefas devem ter a cor especificada");
+    }
+
+    private void persistTask(String title, String description, boolean favorite, String color) {
+        Task task = new Task();
+        task.setTitle(title);
+        task.setDescription(description);
+        task.setFavorite(favorite);
+        task.setColor(color);
+        entityManager.persist(task);
     }
 }

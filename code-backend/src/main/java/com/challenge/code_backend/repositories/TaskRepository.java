@@ -11,4 +11,5 @@ public interface TaskRepository extends JpaRepository<Task, String> {
 
     List<Task> findAllByFavorite(boolean favorite);
     List<Task> findAllByColor(String color);
+
 }
