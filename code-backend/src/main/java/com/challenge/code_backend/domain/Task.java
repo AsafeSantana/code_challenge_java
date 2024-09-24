@@ -3,6 +3,7 @@ package com.challenge.code_backend.domain;
 import jakarta.persistence.*;
 
 import lombok.*;
+import org.antlr.v4.runtime.misc.NotNull;
 
 @Getter
 @Setter

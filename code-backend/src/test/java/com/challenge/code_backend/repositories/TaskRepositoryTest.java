@@ -34,6 +34,8 @@ class TaskRepositoryTest {
 
         assertEquals(2, favoriteTasks.size(), "Deve conter 2 tarefas favoritas");
         assertTrue(favoriteTasks.stream().allMatch(Task::isFavorite), "Todas as tarefas devem ser favoritas");
+
+
     }
 
     @Test

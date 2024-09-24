@@ -30,16 +30,19 @@ class TaskServiceTest {
     }
 
     // método auxiliar de criação de task
-    private Task createTask(String id, String title) {
+    private Task createTask(String id, String title,String description, Boolean favorite, String color) {
         Task task = new Task();
         task.setId(id);
         task.setTitle(title);
+        task.setDescription(description);
+        task.setFavorite(favorite);
+        task.setColor("color");
         return task;
     }
 
     @Test
     void testCreateTask() {
-        Task task = createTask(null, "Teste Task");
+        Task task = createTask(null, "Teste Task","Task Descrição",false,"#ffffff");
 
         when(taskRepository.save(task)).thenReturn(task);
 
@@ -47,19 +50,23 @@ class TaskServiceTest {
 
         assertNotNull(createdTask);
         assertEquals("Teste Task", createdTask.getTitle());
+        assertEquals("Task Descrição", createdTask.getDescription());
+        assertFalse(createdTask.isFavorite());
+        assertEquals("#ffffff", createdTask.getColor());
         verify(taskRepository, times(1)).save(task);
     }
 
     @Test
     void testGetAllTasks() {
-        Task task1 = createTask("1", "Teste Task");
-        Task task2 = createTask("2", "Teste Task 2");
+        Task task1 = createTask("1", "Teste Task", "Descrição 1",false,"#ffffff");
+        Task task2 = createTask("2", "Teste Task 2","Descrição 2", false, "#ffffff");
 
         when(taskRepository.findAll()).thenReturn(Arrays.asList(task1, task2));
 
         List<Task> tasks = taskService.getAllTasks();
 
         assertEquals(2, tasks.size(), "Deve retornar 2 tarefas");
+        //System.out.println("Teste de sucesso: O número de tarefas é 2.");
         assertEquals("Teste Task", tasks.get(0).getTitle());
         assertEquals("Teste Task 2", tasks.get(1).getTitle());
 
@@ -68,8 +75,8 @@ class TaskServiceTest {
 
     @Test
     void testUpdateTask() {
-        Task existingTask = createTask("1", "Teste Task");
-        Task taskDetails = createTask(null, "New Task");
+        Task existingTask = createTask("1", "Teste Task","Descrição", false, "#ffffff");
+        Task taskDetails = createTask(null, "New Task","Nova descrição", false, "#ffffff");
 
         when(taskRepository.findById("1")).thenReturn(Optional.of(existingTask));
         when(taskRepository.save(existingTask)).thenReturn(existingTask);
@@ -78,13 +85,14 @@ class TaskServiceTest {
 
         assertNotNull(updatedTask);
         assertEquals("New Task", updatedTask.getTitle());
+        assertEquals("Nova descrição", updatedTask.getDescription());
         verify(taskRepository, times(1)).findById("1");
         verify(taskRepository, times(1)).save(existingTask);
     }
 
     @Test
     void testGetTaskById() {
-        Task task = createTask("1", "Teste Task");
+        Task task = createTask("1", "Teste Task","Descrição",false,"#ffffff");
 
         when(taskRepository.findById("1")).thenReturn(Optional.of(task));
 
@@ -114,9 +122,9 @@ class TaskServiceTest {
 
     @Test
     void testGetFavoritesTasks() {
-        Task task1 = createTask("1", "Favorita 1");
+        Task task1 = createTask("1", "Favorita 1","Descrição 1", true, "#ffffff");
         task1.setFavorite(true);
-        Task task2 = createTask("2", "Favorita 2");
+        Task task2 = createTask("2", "Favorita 2","Descrição 2", true, "#ffffff");
         task2.setFavorite(true);
 
         when(taskRepository.findAllByFavorite(true)).thenReturn(Arrays.asList(task1, task2));
@@ -129,7 +137,7 @@ class TaskServiceTest {
 
     @Test
     void testUpdateTaskColor() {
-        Task task = createTask("1", "Teste Task");
+        Task task = createTask("1", "Teste Task","Descrição", false, "#ffffff");
         task.setColor("#ffffff");
 
         when(taskRepository.findById("1")).thenReturn(Optional.of(task));
