@@ -1,0 +1,28 @@
+.color-picker-container {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #d1d5db; // Substituto para a borda Tailwind
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 8px;
+    display: flex;
+  }
+  
+  .color-picker-grid {
+    display: flex;
+    gap: 8px; 
+  }
+  
+  .color-circle {
+    width: 32px; 
+    height: 32px; 
+    cursor: pointer;
+    border-radius: 50%; 
+    border: 2px solid transparent;
+    transition: border-color 0.2s ease-in-out;
+  
+    &:hover {
+      border-color: #b3b3b3; 
+    }
+  }
+  

@@ -1,0 +1,32 @@
+.task-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 8px;
+
+  }
+  
+  .color-filter-container {
+    display: flex;
+    justify-content: center;
+    margin: 16px 0;
+  }
+  
+  .section-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 14.52px;
+    color: #464646;
+    padding-left: 40px;
+  }
+  
+  .task-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding-left: 28px;
+    padding-right: 8px;
+    max-width: 100%;
+  }
+  

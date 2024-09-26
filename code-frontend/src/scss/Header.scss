@@ -1,0 +1,113 @@
+// _Header.scss
+
+.header {
+  background-color: #ffffff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+  padding: 1rem; 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap; 
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+
+    .logo {
+      width: 36.31px;
+      height: 36.31px;
+      margin-right: 1rem; 
+      margin-left: 1rem;  
+    }
+
+    .title {
+      color: #455a64; 
+      font-family: 'Inter', sans-serif; 
+      font-size: 18px; 
+      font-weight: 400; 
+      line-height: 16.94px; 
+      text-align: left; 
+      margin-right: 1rem; 
+    }
+  }
+
+  .search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: 1rem; 
+
+    .search-input {
+      width: 530.17px; 
+      height: 28px; 
+      top: 16.1px; 
+      left: 191.18px; 
+      gap: 0px; 
+      border-radius: 3px 0px 0px 0px; 
+      border: 3px solid transparent; 
+      opacity: 1; 
+
+      
+      background-color: #ffffff; 
+      box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.25); 
+      outline: none; 
+
+      &::placeholder {
+        font-family: 'Inter', sans-serif; 
+        font-size: 12px; 
+        color:#9A9A9A; 
+        
+      }
+    }
+
+    .search-icon {
+      position: absolute;
+      right: 0.5rem; 
+      top: 50%;
+      transform: translateY(-50%);
+      width: 12.61px; 
+      height: 13.5px; 
+    }
+  }
+
+  .icon-container {
+    display: flex;
+    align-items: center;
+
+    .vector-icon {
+      width: 13.14px; 
+      height: 13.14px; 
+    }
+  }
+}
+
+// Media Queries para Responsividade
+@media (max-width: 768px) { // Para tablets e dispositivos móveis
+  .header {
+    padding: 0.5rem; // Reduzir padding para dispositivos menores
+    flex-direction: column; // Empilha os itens verticalmente
+    align-items: flex-start; // Alinha os itens à esquerda
+  }
+
+  .logo-container {
+    margin-bottom: 0.5rem; // Espaço entre a logo e os outros itens
+  }
+
+  .search-container {
+    width: 100%; // Fazer a barra de pesquisa ocupar toda a largura
+    margin-left: 0; // Remove o margin left
+    margin-bottom: 0.5rem; // Espaço inferior para a barra de pesquisa
+
+    .search-input {
+      width: 100%; // Para telas menores, a largura deve ser 100%
+      height: 28px; // Altura especificada
+      border-radius: 3px 0px 0px 0px; // Arredondamento do canto
+      border: 1px solid transparent; // Bordas transparentes para corresponder ao layout
+      opacity: 1; // Mudança para visível
+    }
+  }
+
+  .icon-container {
+    justify-content: flex-start; // Ajusta o alinhamento dos ícones
+  }
+}

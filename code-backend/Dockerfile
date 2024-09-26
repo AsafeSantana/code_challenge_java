@@ -20,3 +20,4 @@ COPY --from=build /app/target/*.jar app.jar
 
 # Definindo o ponto de entrada
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+

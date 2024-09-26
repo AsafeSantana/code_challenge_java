@@ -1,0 +1,41 @@
+.color-filter {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .remove-filter-btn {
+    color: #4a4a4a;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    padding: 4px 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    background-color: white;
+    &:hover {
+      background-color: #f0f0f0;
+    }
+  }
+  
+  .color-options {
+    display: flex;
+    gap: 8px; 
+  }
+  
+  .color-circle {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    transition: border-color 0.2s ease;
+    &:hover {
+      border-color: #a0a0a0;
+    }
+  }
+  
